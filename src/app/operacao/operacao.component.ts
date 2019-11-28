@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { AdicaoAPIServiceService } from '../service/adicao-apiservice.service';
-import { Adicao } from '../model/Adicao';
 
 @Component({
   selector: 'has-operacao',
@@ -12,20 +11,21 @@ import { Adicao } from '../model/Adicao';
 export class OperacaoComponent implements OnInit {
 
   formAdicao: FormGroup;
-
   constructor(public formBuilder: FormBuilder, public service: AdicaoAPIServiceService) { }
 
   ngOnInit() {
     this.formAdicao = this.formBuilder.group({
-      Num1: this.formBuilder.control(''),
-      Num2: this.formBuilder.control('')
+      num1: this.formBuilder.control(''),
+      num2: this.formBuilder.control('')
     })
   }
-  onProcessar() {
-    let adicao: Adicao = this.formAdicao.value;
-    this.service.createAdicao(adicao)
-      .subscribe(data => console.log(data),
-        error => console.log(error));
+  onProcessar(){
+    let num1 :  string = this.formAdicao.value.num1;
+    let num2 :  string = this.formAdicao.value.num2;
+
+    this.service.getAdicao(num1, num2)
+                .subscribe(data => alert(data),
+                           error => console.log(error));
   }
 
 
