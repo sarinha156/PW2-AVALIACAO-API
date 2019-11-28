@@ -16,13 +16,13 @@ export class AdicaoAPIServiceService {
     alert(errorMessage);
     return throwError(errorMessage);
   }
-  // getProjetos() : Observable <Projeto[]>{
-  //   return this.httpClient.get<Projeto[]>(this.apiURL)
-  //                         .pipe(retry(1),catchError(this.handleError))
-  // }
-  // createProjeto(projeto: Projeto): Observable<Projeto> {
-  //   return this.httpClient.post<Projeto>(this.apiURL, projeto)
-  //   .pipe(retry(1),
-  //   catchError(this.handleError));
-  //   }
+  getAdicao() : Observable <Adicao[]>{
+    return this.httpClient.get<Adicao[]>(this.apiURL)
+                          .pipe(retry(1),catchError(this.handleError))
+  }
+  createAdicao(adicao: Adicao): Observable<Adicao> {
+    return this.httpClient.post<Adicao>(this.apiURL, adicao)
+    .pipe(retry(1),
+    catchError(this.handleError));
+    }
 }

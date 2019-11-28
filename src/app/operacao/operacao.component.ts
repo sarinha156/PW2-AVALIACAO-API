@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { AdicaoAPIServiceService } from '../service/adicao-apiservice.service';
+import { Adicao } from '../model/Adicao';
 
 @Component({
   selector: 'has-operacao',
@@ -21,8 +22,8 @@ export class OperacaoComponent implements OnInit {
     })
   }
   onProcessar() {
-    let adicao: AdicaoAPIServiceService = this.formAdicao.value;
-    this.service.createAdicao(AdicaoAPIServiceService)
+    let adicao: Adicao = this.formAdicao.value;
+    this.service.createAdicao(adicao)
       .subscribe(data => console.log(data),
         error => console.log(error));
   }
